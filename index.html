@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dr. Trimor-Tamoria</title>
+<meta name="description" content="Primary care and aesthetic wellness with Dr. Maria Flora G. Trimor-Tamoria in National City, CA — family medicine, care, body contouring, skin rejuvenation and medical-grade skincare under one roof.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+/* Layout: soft-focus gradient hero with an open portrait slot on the right; physician + spa split; device gallery with hover-reveal details. */
+:root{
+  --ink:#16141a;          /* text, primary buttons */
+  --ink-soft:#5d5763;     /* secondary text */
+  --paper:#ffffff;        /* page ground */
+  --mist:#f4f1f4;         /* tiles, quiet panels */
+  --blush:#ead9df;        /* hero gradient, warm */
+  --sage:#cfdcd3;         /* hero gradient, cool */
+  --lilac:#dcd6ea;        /* hero gradient, accent */
+  --line:#e4dfe5;
+  --display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  --r-lg:28px; --r-md:18px;
+  --gutter:clamp(16px,4vw,48px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:0}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:var(--gutter)}
+.eyebrow{font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font:600 13px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);transition:transform .2s,background .2s,color .2s}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-light{background:#fff;color:var(--ink);border-color:#fff}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:14px;height:14px}
+
+/* Nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:14px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 10px 10px 22px;border-radius:999px;background:rgba(255,255,255,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.8)}
+.logo{font:700 15px/1 var(--display);letter-spacing:.02em;text-decoration:none;white-space:nowrap}
+.logo span{font-weight:500;color:var(--ink-soft)}
+.nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:14px}
+.nav-links a{text-decoration:none;color:var(--ink-soft)}
+.nav-links a:hover{color:var(--ink)}
+@media (max-width:860px){.nav-links{display:none}}
+
+/* Hero */
+.hero{margin-top:-78px;padding-top:78px}
+.hero-card{position:relative;overflow:hidden;border-radius:0 0 var(--r-lg) var(--r-lg);
+  background:
+    radial-gradient(60% 70% at 12% 30%,var(--sage) 0%,transparent 70%),
+    radial-gradient(55% 65% at 85% 20%,var(--lilac) 0%,transparent 70%),
+    radial-gradient(70% 80% at 60% 100%,var(--blush) 0%,transparent 70%),
+    #efe8ec;}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:end;padding-block:72px 48px}
+.hero-copy{display:flex;flex-direction:column;gap:28px;min-width:0;padding-bottom:24px}
+.hero h1{font-size:clamp(44px,7.2vw,96px);line-height:.92;font-weight:600;text-transform:uppercase;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;color:#fff;-webkit-text-stroke:0;text-shadow:0 1px 30px rgba(120,90,110,.18)}
+.hero-lede{max-width:46ch;color:#3e3843;font-size:17px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-pillars{display:flex;flex-wrap:wrap;gap:8px}
+.hero-pillars span{font-size:13px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8)}
+
+/* Reserved portrait slot — replace .portrait-placeholder with <img src="images/dr-tamoria.jpg" alt="Dr. Maria Flora G. Trimor-Tamoria"> */
+.portrait{position:relative;align-self:stretch;min-height:520px;border-radius:var(--r-lg);overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.portrait-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  border:1.5px dashed rgba(22,20,26,.18);border-radius:var(--r-lg);background:rgba(255,255,255,.22);color:var(--ink-soft);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:24px}
+.portrait-placeholder svg{width:38px;height:38px;opacity:.5}
+.portrait-tag{position:absolute;left:18px;bottom:18px;right:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-radius:var(--r-md);background:rgba(255,255,255,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.portrait-tag strong{font:600 15px/1.2 var(--display);display:block}
+.portrait-tag small{color:var(--ink-soft);font-size:12.5px}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;padding-block:56px 32px}
+  .portrait{min-height:420px}
+}
+
+/* Section scaffolding */
+section{padding-block:clamp(64px,9vw,120px)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:40px}
+.sec-head h2{font-size:clamp(30px,3.6vw,46px);line-height:1.05;font-weight:600;max-width:16ch}
+.sec-head p{max-width:52ch;color:var(--ink-soft);margin-top:14px}
+.sec-head .head-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* Two paths */
+.paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.path-well{background:linear-gradient(140deg,#e2e9e4,#e6e2ee)}
+@media (max-width:1080px){.paths{grid-template-columns:1fr 1fr}.path-well{grid-column:1/-1}}
+.path{position:relative;border-radius:var(--r-lg);padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;gap:20px;min-width:0}
+.path-care{background:var(--mist)}
+.path-spa{background:linear-gradient(140deg,#e9dde3,#dfe6e1)}
+.path h3{font-size:clamp(24px,2.6vw,32px);font-weight:600}
+.path ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px}
+.path li{font-size:15px;padding-top:10px;border-top:1px solid rgba(22,20,26,.12)}
+.path .btn{align-self:flex-start;margin-top:auto}
+@media (max-width:820px){.paths{grid-template-columns:1fr}}
+@media (max-width:440px){.path ul{grid-template-columns:1fr}}
+
+/* Technology gallery */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{font:500 14px/1 var(--body);padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:1080px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.gallery{grid-template-columns:1fr}}
+
+.device{position:relative;aspect-ratio:3/4;max-width:100%;border-radius:var(--r-md);overflow:hidden;background:var(--mist);isolation:isolate;cursor:default;outline:none}
+.device img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14% 12% 32%;transition:transform .6s cubic-bezier(.2,.7,.2,1);mix-blend-mode:multiply}
+.device.cover img{object-fit:cover;padding:0}
+/* Fallback art when a product image is missing */
+.device .fallback{position:absolute;inset:0;display:none;align-items:flex-start;padding:22px;font:600 clamp(22px,2.2vw,28px)/1.02 var(--display);letter-spacing:-.02em;color:rgba(22,20,26,.78)}
+.device.noimg .fallback{display:flex}
+.device.noimg img{display:none}
+.device:nth-child(4n+1){background:linear-gradient(160deg,#eef1ee,#dfe7e1)}
+.device:nth-child(4n+2){background:linear-gradient(160deg,#f3edf1,#e8dbe2)}
+.device:nth-child(4n+3){background:linear-gradient(160deg,#efeef5,#e0dcec)}
+.device:nth-child(4n+4){background:linear-gradient(160deg,#f2efec,#e7e1dc)}
+
+.device .meta{position:absolute;left:0;right:0;bottom:0;padding:18px;display:flex;flex-direction:column;gap:4px;z-index:2;
+  background:linear-gradient(to top,rgba(255,255,255,.95) 55%,rgba(255,255,255,0));transition:opacity .3s}
+.device .maker{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.device h3{font-size:19px;font-weight:600;line-height:1.15}
+.device .tag{position:absolute;top:14px;right:14px;z-index:2;font-size:11.5px;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.8)}
+
+.device .reveal{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;padding:20px;
+  background:rgba(22,20,26,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;
+  opacity:0;transform:translateY(12px);transition:opacity .35s,transform .35s;pointer-events:none}
+.device .reveal .maker{color:rgba(255,255,255,.65)}
+.device .reveal h3{font-size:20px}
+.device .reveal p{font-size:14px;line-height:1.5;color:rgba(255,255,255,.88)}
+.device .reveal .uses{font-size:12.5px;color:rgba(255,255,255,.65)}
+.device .reveal .links{display:flex;flex-wrap:wrap;gap:8px}
+.device .reveal a{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;margin-top:4px;padding:9px 14px;border-radius:999px;background:#fff;color:var(--ink);font:600 12px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.device:hover .reveal,.device:focus-within .reveal,.device.open .reveal{opacity:1;transform:none;pointer-events:auto}
+.device:hover img{transform:scale(1.04)}
+@media (max-width:460px){.device{aspect-ratio:4/5}}
+
+.fine{margin-top:22px;font-size:13px;color:var(--ink-soft);max-width:80ch}
+
+/* Skincare band */
+.skin{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.skin-copy{border-radius:var(--r-lg);background:var(--mist);padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:18px;min-width:0}
+.skin-copy h2{font-size:clamp(28px,3.2vw,42px);font-weight:600;line-height:1.05}
+.skin-copy p{color:var(--ink-soft);max-width:52ch}
+.skin-img{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:340px;background:linear-gradient(150deg,#e6ebe7,#ead9df)}
+.skin-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.skin-img .fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font:600 40px/1 var(--display);letter-spacing:.2em;color:rgba(22,20,26,.35)}
+.skin-img.noimg .fallback{display:flex}
+.skin-img.noimg img{display:none}
+@media (max-width:820px){.skin{grid-template-columns:1fr}}
+
+/* Visit / booking */
+.visit{border-radius:var(--r-lg);overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;
+  background:radial-gradient(70% 90% at 0% 0%,var(--sage),transparent 70%),radial-gradient(70% 90% at 100% 100%,var(--blush),transparent 70%),#efe9ed}
+.visit-copy{padding:clamp(28px,5vw,64px);display:flex;flex-direction:column;gap:20px;min-width:0}
+.visit-copy h2{font-size:clamp(32px,4vw,54px);line-height:1;font-weight:600;text-transform:uppercase;letter-spacing:-.03em}
+.visit dl{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin:8px 0 0;font-size:15px}
+.visit dt{color:var(--ink-soft)}
+.visit dd{margin:0}
+form{padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,.6)}
+label{font-size:13px;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px}
+input,select,textarea{font:inherit;font-size:15px;color:var(--ink);padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#fff}
+textarea{min-height:90px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.when{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+.when legend{font-size:13px;color:var(--ink-soft);padding:0;margin-bottom:8px}
+.when-opts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.when-opts input{position:absolute;opacity:0;pointer-events:none}
+.when-opts label{display:flex;justify-content:center;align-items:center;padding:12px 8px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:14px;cursor:pointer;text-align:center}
+.when-opts input:checked + label{background:var(--ink);color:#fff;border-color:var(--ink)}
+.when-opts input:focus-visible + label{outline:2px solid var(--ink);outline-offset:2px}
+.form-note{font-size:13px;color:var(--ink-soft);min-height:1.2em}
+@media (max-width:820px){.visit{grid-template-columns:1fr}}
+@media (max-width:440px){.form-row{grid-template-columns:1fr}}
+
+
+/* About */
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,72px);align-items:start}
+.about-years{border-radius:var(--r-lg);background:linear-gradient(150deg,#e6ece8,#ecdfe5);padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:10px;aspect-ratio:1/1;max-width:100%;justify-content:flex-end}
+.about-years .num{font:600 clamp(80px,12vw,160px)/.85 var(--display);letter-spacing:-.05em}
+.about-years .lbl{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+.about-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
+.about-copy h2{font-size:clamp(30px,3.6vw,46px);line-height:1.05;font-weight:600}
+.about-copy > p{max-width:62ch;color:#3e3843;font-size:17px}
+.focus{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 24px}
+.focus li{border-top:1px solid var(--ink);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+.focus strong{font:600 16px/1.2 var(--display)}
+.focus span{font-size:14px;color:var(--ink-soft);line-height:1.5}
+@media (max-width:860px){.about{grid-template-columns:1fr}.about-years{aspect-ratio:auto;min-height:220px}.focus{grid-template-columns:1fr}}
+
+/* Hours */
+.hours{border-collapse:collapse;width:100%;max-width:380px;font-size:15px;font-variant-numeric:tabular-nums}
+.hours th{text-align:left;font-weight:400;color:var(--ink-soft);padding:7px 0;border-bottom:1px solid rgba(22,20,26,.1)}
+.hours td{text-align:right;padding:7px 0;border-bottom:1px solid rgba(22,20,26,.1)}
+.hours tr.today th,.hours tr.today td{color:var(--ink);font-weight:600}
+.hours tr.today th::after{content:"Today";margin-left:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--ink);color:#fff;vertical-align:1px}
+
+footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:28px}
+
+
+/* ===== Mobile only (≤760px). Desktop styles above are untouched. ===== */
+.mbar{display:none}
+.swipe-hint{display:none}
+@media (max-width:760px){
+  section{padding-block:56px}
+  .sec-head{margin-bottom:24px;gap:16px}
+  .sec-head p{margin-top:10px;font-size:15px}
+
+  /* Nav */
+  .nav{padding-block:10px}
+  .nav-inner{padding:8px 8px 8px 18px}
+  .logo span{display:none}
+  .nav .btn{display:none}
+  .nav-inner{padding:14px 18px}
+
+  /* Hero */
+  .hero{margin-top:-70px;padding-top:70px}
+  .hero-grid{padding-block:40px 20px;gap:24px}
+  .hero-copy{gap:20px;padding-bottom:0}
+  .hero h1{font-size:clamp(40px,12.5vw,58px)}
+  .hero-lede{font-size:16px}
+  .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .hero-actions .btn{justify-content:center;padding:14px 10px;font-size:11.5px;letter-spacing:.04em;text-align:center}
+  .hero-actions .btn svg{display:none}
+  .hero-pillars{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gutter));padding-inline:var(--gutter)}
+  .hero-pillars::-webkit-scrollbar{display:none}
+  .hero-pillars span{white-space:nowrap;flex:0 0 auto}
+  .portrait{min-height:0;aspect-ratio:4/5;max-height:440px;width:100%}
+
+  /* About: compact years badge sits beside the heading area */
+  .about{gap:20px}
+  .about-years{aspect-ratio:auto;min-height:0;flex-direction:row;align-items:center;gap:16px;padding:20px 22px}
+  .about-years .num{font-size:64px}
+  .about-years .lbl{font-size:12px;line-height:1.4}
+  .about-copy{gap:14px}
+  .about-copy > p{font-size:16px}
+  .focus{gap:0;margin-top:4px}
+  .focus li{padding-block:14px;border-top-color:var(--line)}
+
+  /* Services */
+  .paths{gap:12px}
+  .path{padding:24px;gap:16px}
+  .path ul{grid-template-columns:1fr 1fr;gap:8px 14px}
+  .path li{font-size:14px;padding-top:8px}
+  .path .btn{align-self:stretch;justify-content:center}
+
+  /* Technology: swipeable carousel instead of a long stack */
+  #technology .head-actions{display:none}
+  .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*var(--gutter)) 16px;padding-inline:var(--gutter)}
+  .filters::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto}
+  .gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin-inline:calc(-1*var(--gutter));padding-inline:var(--gutter);scroll-padding-inline:var(--gutter);padding-bottom:4px}
+  .gallery::-webkit-scrollbar{display:none}
+  .device{flex:0 0 78%;aspect-ratio:4/5;scroll-snap-align:start}
+  .device .reveal{padding:18px;gap:10px}
+  .device .reveal p{font-size:13.5px}
+  .swipe-hint{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+  .fine{font-size:12px;margin-top:16px}
+
+  /* Skincare: image leads, copy follows */
+  .skin{gap:12px}
+  .skin-img{order:-1;min-height:220px}
+  .skin-copy{padding:24px;gap:14px}
+  .skin-copy .btn{align-self:stretch!important;justify-content:center}
+
+  /* Visit */
+  .visit-copy{padding:28px 22px;gap:16px}
+  .visit-copy h2{font-size:clamp(32px,10vw,44px)}
+  .visit dl{grid-template-columns:1fr;gap:4px}
+  .visit dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-top:8px}
+  .hours{max-width:none}
+  form{padding:22px}
+  input,select,textarea{font-size:16px} /* prevents iOS zoom on focus */
+
+  footer{padding-block:28px 24px}
+
+  /* Sticky action bar */
+  body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:30;
+    padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.88);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:6px;padding:13px 8px;border-radius:999px;font:600 12px/1 var(--body);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);background:#fff;color:var(--ink)}
+  .mbar a.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .mbar svg{width:15px;height:15px}
+}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <nav class="nav-inner" aria-label="Main">
+      <a class="logo" href="#top">Dr. Trimor-Tamoria <span>· Family Medicine &amp; Aesthetics</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#technology">Technology</a></li>
+        <li><a href="#skincare">Skincare</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+      <a class="btn btn-dark" href="#visit">Book a visit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-card">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Primary care · Wellness &amp; function · Aesthetics · National City, CA</p>
+          <h1>Whole-body care, <em>one</em> physician</h1>
+          <p class="hero-lede">For more than 22 years, Dr. Maria Flora G. Trimor-Tamoria has cared for patients as if they were family. Today her practice brings primary care and medical aesthetics together, so the doctor who knows your health history is the one planning your treatments.</p>
+          <div class="hero-actions">
+            <a class="btn btn-dark" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Book an appointment</a>
+            <a class="btn btn-light" href="#technology">Explore treatments</a>
+          </div>
+          <div class="hero-pillars" aria-label="Highlights">
+            <span>22+ years in practice</span><span>Family medicine &amp; geriatrics</span><span>Laser &amp; aesthetic treatments</span>
+          </div>
+        </div>
+
+        <!-- PORTRAIT SLOT: swap the placeholder div for the professional photo -->
+        <div class="portrait">
+          <div class="portrait-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+            Portrait coming soon
+          </div>
+          <div class="portrait-tag">
+            <div><strong>Maria Flora G. Trimor-Tamoria, MD</strong><small>Primary Care · Wellness · Aesthetics</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-years"><span class="num">22+</span><span class="lbl">years caring for patients</span></div>
+      <div class="about-copy">
+        <p class="eyebrow">Meet your doctor</p>
+        <h2>A true ally in your care</h2>
+        <p>Dr. Maria Flora G. Trimor-Tamoria is a dedicated physician specializing in family primary care and family medicine, with more than 22 years in practice and a special interest in geriatrics. With a passion for holistic patient care, she has expanded her expertise to include aesthetics, wellness and function, offering a comprehensive approach to health and beauty.</p>
+        <p>Dr. Trimor-Tamoria is committed to helping her patients look, feel and function their best, integrating medical expertise with the latest advancements in aesthetic and wellness treatments. She takes pride in a compassionate, thorough and professional approach, and cares for every patient as if they were family.</p>
+        <p>She is proud to serve the National City and San Diego area, bringing high-quality, patient-centered care to her community.</p>
+        <ul class="focus">
+          <li><strong>Family medicine</strong><span>Care for adults and families, from check-ups to long-term conditions</span></li>
+          <li><strong>Geriatrics</strong><span>Attentive care for older adults and their caregivers</span></li>
+          <li><strong>Wellness &amp; function</strong><span>Weight loss, pain relief and recovery to help you move and feel better</span></li>
+          <li><strong>Laser aesthetics</strong><span>Skin and body treatments planned with your full health picture in mind</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO PATHS -->
+  <section id="services" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>Three ways we care for you</h2>
+          <p>Start with a physical, a facial or a plan to feel stronger. Either way, your care is planned around your medications, history and goals.</p>
+        </div>
+      </div>
+      <div class="paths">
+        <article class="path path-care">
+          <p class="eyebrow">Primary care</p>
+          <h3>Family medicine for every age</h3>
+          <ul>
+            <li>Annual physicals</li><li>Preventive screenings</li>
+            <li>Chronic condition care</li><li>Sick visits</li>
+            <li>Geriatric care</li><li>Lab work &amp; referrals</li>
+          </ul>
+          <a class="btn btn-ghost" href="#visit">Schedule a check-up</a>
+        </article>
+        <article class="path path-spa">
+          <p class="eyebrow">Health &amp; wellness spa</p>
+          <h3>Medical aesthetics</h3>
+          <ul>
+            <li>Body contouring</li><li>RF microneedling</li>
+            <li>Skin tightening</li><li>Laser &amp; light therapy</li>
+            <li>Plasma resurfacing</li><li>Advanced facials</li>
+          </ul>
+          <a class="btn btn-ghost" href="#technology">See the technology</a>
+        </article>
+        <!-- DRAFT: Dr. Trimor-Tamoria is sending revised Wellness & Function copy -->
+        <article class="path path-well">
+          <p class="eyebrow">Wellness &amp; function</p>
+          <h3>Feel stronger, move better</h3>
+          <ul>
+            <li>Medical weight loss</li><li>Chronic pain relief</li>
+            <li>Post-surgery recovery</li><li>Tennis elbow &amp; joint pain</li>
+            <li>Pelvic floor health</li><li>Strength &amp; mobility</li>
+          </ul>
+          <a class="btn btn-ghost" href="#visit">Start your plan</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY GALLERY -->
+  <section id="technology" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>The technology behind your treatment</h2>
+          <p>Hover or tap any device to see what it does and visit the manufacturer's site.</p>
+        </div>
+        <div class="head-actions">
+          <a class="btn btn-dark" href="#visit">Book a consultation</a>
+        </div>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter treatments">
+        <button class="chip" id="f-all" data-f="all" aria-pressed="true">All</button>
+        <button class="chip" id="f-body" data-f="body" aria-pressed="false">Body</button>
+        <button class="chip" id="f-well" data-f="wellness" aria-pressed="false">Wellness &amp; function</button>
+        <button class="chip" id="f-skin" data-f="skin" aria-pressed="false">Skin tightening</button>
+        <button class="chip" id="f-laser" data-f="laser" aria-pressed="false">Laser &amp; light</button>
+        <button class="chip" id="f-facial" data-f="facial" aria-pressed="false">Facials</button>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <!-- Product images: images live in /product_images/ using the file names below. -->
+
+        <article class="device" tabindex="0" data-cat="body wellness">
+          <img src="product_images/emsculpt.jpg" alt="BTL Emsculpt NEO device" loading="lazy">
+          <div class="fallback">Emsculpt<br>NEO</div>
+          <span class="tag">Body · Function</span>
+          <div class="meta"><span class="maker">BTL</span><h3>Emsculpt NEO</h3></div>
+          <div class="reveal">
+            <span class="maker">BTL · Sculpting &amp; function</span><h3>Emsculpt NEO</h3>
+            <p>Combines heat with magnetic muscle stimulation for body contouring and chronic pain relief. Used for sculpting and for function, including tennis elbow, recovery after surgery and the feet.</p>
+            <span class="uses">Treats everywhere except the neck and chest</span>
+            <a href="https://bodybybtl.com/solutions/emsculpt-neo" target="_blank" rel="noopener">Visit BTL ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="body wellness">
+          <img src="product_images/emsella.jpg" alt="BTL Emsella chair" loading="lazy">
+          <div class="fallback">BTL<br>Emsella</div>
+          <span class="tag">Wellness</span>
+          <div class="meta"><span class="maker">BTL</span><h3>Emsella</h3></div>
+          <div class="reveal">
+            <span class="maker">BTL · Pelvic floor</span><h3>BTL Emsella</h3>
+            <p>A treatment chair that strengthens the pelvic floor while you sit fully clothed. One session delivers the equivalent of 11,000 Kegels, helping with bladder leakage and intimate wellness.</p>
+            <span class="uses">Non-invasive · no downtime</span>
+            <a href="https://bodybybtl.com/solutions/btl-emsella" target="_blank" rel="noopener">Visit BTL ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="skin">
+          <img src="product_images/xerf.png" alt="Cynosure XERF device" loading="lazy">
+          <div class="fallback">XERF</div>
+          <span class="tag">Tightening</span>
+          <div class="meta"><span class="maker">Cynosure</span><h3>XERF</h3></div>
+          <div class="reveal">
+            <span class="maker">Cynosure · Skin tightening</span><h3>XERF</h3>
+            <p>Monopolar radiofrequency delivered at more than one frequency to heat multiple depths of skin, tightening and firming the face and body without needles or downtime.</p>
+            <span class="uses">Face · neck · body</span>
+            <a href="https://www.cynosure.com/xerf/" target="_blank" rel="noopener">Visit Cynosure ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="skin">
+          <img src="product_images/ellman.jpg" alt="Pellevé radiofrequency system" loading="lazy">
+          <div class="fallback">Pellevé</div>
+          <span class="tag">Tightening</span>
+          <div class="meta"><span class="maker">Ellman · Cynosure</span><h3>Pellevé</h3></div>
+          <div class="reveal">
+            <span class="maker">Ellman · now Cynosure</span><h3>Pellevé</h3>
+            <p>Gentle radiofrequency glided over the skin to warm deeper layers and encourage collagen, softening fine lines and wrinkles. Comfortable, with no downtime.</p>
+            <span class="uses">Around eyes · cheeks · jawline</span>
+            <a href="https://www.cynosure.com/" target="_blank" rel="noopener">Visit Cynosure ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="skin">
+          <img src="product_images/vivace.jpg" alt="Vivace RF microneedling device" loading="lazy">
+          <div class="fallback">Vivace</div>
+          <span class="tag">Microneedling</span>
+          <div class="meta"><span class="maker">Aesthetics Biomedical</span><h3>Vivace</h3></div>
+          <div class="reveal">
+            <span class="maker">Aesthetics Biomedical · RF microneedling</span><h3>Vivace</h3>
+            <p>Fine microneedles deliver radiofrequency energy beneath the skin to boost collagen, firming skin and smoothing fine lines, pores and acne scars with little downtime.</p>
+            <span class="uses">Face · neck · hands · body</span>
+            <a href="https://www.aestheticsbiomedical.com/" target="_blank" rel="noopener">Visit Aesthetics Biomedical ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="skin">
+          <img src="product_images/almaopus.jpg" alt="Alma Opus Plasma system" loading="lazy">
+          <div class="fallback">Alma<br>Opus</div>
+          <span class="tag">Plasma</span>
+          <div class="meta"><span class="maker">Alma</span><h3>Opus Plasma</h3></div>
+          <div class="reveal">
+            <span class="maker">Alma · Fractional plasma</span><h3>Opus Plasma &amp; Eye</h3>
+            <p>Fractional plasma powered by radiofrequency resurfaces skin to smooth wrinkles, refine texture and soften scars. The eye treatment targets crepiness and fine lines around the eyes.</p>
+            <span class="uses">Face · eyes · neck · short recovery</span>
+            <a href="https://almalasers.com/ba/" target="_blank" rel="noopener">Visit Alma ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="skin">
+          <img src="product_images/shenb.jpg" alt="Shenb Virtue RF microneedling system" loading="lazy">
+          <div class="fallback">Virtue<br>RF</div>
+          <span class="tag">Microneedling</span>
+          <div class="meta"><span class="maker">Shenb · Cartessa</span><h3>Virtue RF</h3></div>
+          <div class="reveal">
+            <span class="maker">Shenb · distributed by Cartessa</span><h3>Virtue RF</h3>
+            <p>Microneedling paired with radiofrequency energy delivered beneath the surface to improve texture, pores, acne scars and mild laxity.</p>
+            <span class="uses">Face · neck · body</span>
+            <span class="links"><a href="https://www.cartessaaesthetics.com/" target="_blank" rel="noopener">Visit Cartessa ↗</a><a href="https://www.shenb.com/eng/product/virtueRF.php" target="_blank" rel="noopener">Shenb ↗</a></span>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="skin">
+          <img src="product_images/lumenis.png" alt="Lumenis Legend Pro system" loading="lazy">
+          <div class="fallback">Legend<br>Pro</div>
+          <span class="tag">Tightening</span>
+          <div class="meta"><span class="maker">Lumenis</span><h3>Legend Pro</h3></div>
+          <div class="reveal">
+            <span class="maker">Lumenis · RF platform</span><h3>Legend Pro</h3>
+            <p>Two treatments in one system: radiofrequency to tighten and contour, and RF microneedling to resurface for smoother, firmer skin.</p>
+            <span class="uses">Face · neck · body</span>
+            <a href="https://lumenis.com/aesthetics/products/legend-pro/" target="_blank" rel="noopener">Visit Lumenis ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="laser">
+          <img src="product_images/palomaricon.jpg" alt="Cynosure Palomar Icon aesthetic system" loading="lazy">
+          <div class="fallback">Palomar<br>Icon</div>
+          <span class="tag">Laser</span>
+          <div class="meta"><span class="maker">Cynosure</span><h3>Icon</h3></div>
+          <div class="reveal">
+            <span class="maker">Cynosure · Laser &amp; IPL</span><h3>Palomar Icon</h3>
+            <p>A multi-use platform with intense pulsed light and fractional laser options for sun damage, redness, broken capillaries, scars, stretch marks and hair removal.</p>
+            <span class="uses">Pigment · vessels · resurfacing · hair</span>
+            <a href="https://www.cynosure.com/product/palomar-icon-aesthetic-system/" target="_blank" rel="noopener">Visit Cynosure ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="laser">
+          <img src="product_images/picosure.jpg" alt="Cynosure PicoSure laser" loading="lazy">
+          <div class="fallback">PicoSure</div>
+          <span class="tag">Laser</span>
+          <div class="meta"><span class="maker">Cynosure</span><h3>PicoSure</h3></div>
+          <div class="reveal">
+            <span class="maker">Cynosure · Picosecond laser</span><h3>PicoSure</h3>
+            <p>Delivers ultra-short laser pulses that break up pigment with minimal heat. Used for tattoo removal, dark spots and refreshing skin tone and texture.</p>
+            <span class="uses">Tattoos · pigment · texture</span>
+            <a href="https://www.cynosure.com/product/picosure/" target="_blank" rel="noopener">Visit Cynosure ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="facial">
+          <img src="product_images/silkpeel.png" alt="DiamondGlow facial device" loading="lazy">
+          <div class="fallback">Diamond<br>Glow</div>
+          <span class="tag">Facial</span>
+          <div class="meta"><span class="maker">Formerly SilkPeel</span><h3>DiamondGlow</h3></div>
+          <div class="reveal">
+            <span class="maker">DiamondGlow · formerly SilkPeel</span><h3>DiamondGlow</h3>
+            <p>Exfoliates, extracts and infuses targeted serums in a single step, using a diamond tip and gentle suction for clearer, brighter skin.</p>
+            <span class="uses">All skin types · no downtime</span>
+            <a href="https://www.diamondglow.com/" target="_blank" rel="noopener">Visit DiamondGlow ↗</a>
+          </div>
+        </article>
+
+        <article class="device" tabindex="0" data-cat="facial">
+          <img src="product_images/pollogen.jpg" alt="GloFacial by Pollogen" loading="lazy">
+          <div class="fallback">Glo<br>Facial</div>
+          <span class="tag">Facial</span>
+          <div class="meta"><span class="maker">Formerly OxyGeneo</span><h3>GloFacial</h3></div>
+          <div class="reveal">
+            <span class="maker">Pollogen · formerly OxyGeneo</span><h3>GloFacial</h3>
+            <p>A three-in-one facial that exfoliates, infuses nourishing serums and oxygenates the skin from within for an instant glow, with no downtime.</p>
+            <span class="uses">Glow · hydration · firmness</span>
+            <a href="https://pollogen.com/" target="_blank" rel="noopener">Visit Pollogen ↗</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="swipe-hint" aria-hidden="true"><span>Swipe to see all 12</span><span>Tap a card for details →</span></p>
+      <p class="fine">Device names and trademarks belong to their manufacturers. Results vary by person. Every treatment begins with a consultation with Dr. Trimor-Tamoria to confirm it's right for you.</p>
+    </div>
+  </section>
+
+  <!-- SKINCARE -->
+  <section id="skincare" style="padding-top:0">
+    <div class="wrap skin">
+      <div class="skin-copy">
+        <p class="eyebrow">Medical-grade skincare</p>
+        <h2>Keep results going at home with Obagi</h2>
+        <p>Obagi Medical products are designed for use under physician guidance. Dr. Trimor-Tamoria builds a home regimen that supports your in-office treatments, from vitamin C serums to targeted systems for tone and texture.</p>
+        <a class="btn btn-dark" href="https://www.obagi.com/" target="_blank" rel="noopener" style="align-self:flex-start">Explore Obagi ↗</a>
+      </div>
+      <div class="skin-img">
+        <img src="product_images/obagi.jpg" alt="Obagi skincare products" loading="lazy">
+        <div class="fallback">OBAGI</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit" style="padding-top:0">
+    <div class="wrap">
+      <div class="visit">
+        <div class="visit-copy">
+          <p class="eyebrow">Visit the practice</p>
+          <h2>Book your visit</h2>
+          <p style="max-width:44ch;color:#3e3843">Fill this out and tap <strong>Text my request</strong>. Your messages app opens with everything filled in, ready to send to the office at (619) 399-9100.</p>
+          <dl>
+            <dt>Phone</dt><dd><a href="tel:+16192675884" style="text-decoration:none;font-weight:600">(619) 267-5884</a></dd>
+            <dt>Address</dt><dd>502 Euclid Ave., #103<br>National City, CA 91950 · <a href="https://maps.apple.com/?address=502%20Euclid%20Ave%20%23103%2C%20National%20City%2C%20CA%2091950&amp;q=Dr.%20Trimor-Tamoria" target="_blank" rel="noopener">Directions ↗</a></dd>
+          </dl>
+          <table class="hours" aria-label="Office hours">
+            <tr data-d="1"><th>Monday</th><td>9:00 AM – 5:00 PM</td></tr>
+            <tr data-d="2"><th>Tuesday</th><td>9:00 AM – 5:00 PM</td></tr>
+            <tr data-d="3"><th>Wednesday</th><td>9:00 AM – 5:00 PM</td></tr>
+            <tr data-d="4"><th>Thursday</th><td>9:00 AM – 5:00 PM</td></tr>
+            <tr data-d="5"><th>Friday</th><td>9:00 AM – 12:00 PM</td></tr>
+            <tr data-d="6"><th>Saturday</th><td>Closed</td></tr>
+            <tr data-d="0"><th>Sunday</th><td>Closed</td></tr>
+          </table>
+        </div>
+        <form id="book" novalidate>
+          <div class="form-row">
+            <label for="b-name">Full name<input id="b-name" name="name" autocomplete="name" required></label>
+            <label for="b-phone">Phone<input id="b-phone" name="phone" type="tel" autocomplete="tel" required></label>
+          </div>
+          <label for="b-email">Email<input id="b-email" name="email" type="email" autocomplete="email"></label>
+          <label for="b-type">Visit type
+            <select id="b-type" name="type">
+              <option>Primary care appointment</option>
+              <option>Aesthetic consultation</option>
+              <option>Wellness &amp; function (weight loss, pain relief)</option>
+              <option>Body contouring</option>
+              <option>Skin treatment or facial</option>
+            </select>
+          </label>
+          <fieldset class="when">
+            <legend>How soon would you like to come in?</legend>
+            <div class="when-opts">
+              <input type="radio" id="w-1" name="when" value="This week" checked><label for="w-1">This week</label>
+              <input type="radio" id="w-2" name="when" value="Next week"><label for="w-2">Next week</label>
+              <input type="radio" id="w-3" name="when" value="Next month"><label for="w-3">Next month</label>
+            </div>
+          </fieldset>
+          <label for="b-note">Anything we should know?<textarea id="b-note" name="note"></textarea></label>
+          <button class="btn btn-dark" type="submit" style="justify-content:center">Text my request</button>
+          <p class="form-note" id="b-msg" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Maria Flora G. Trimor-Tamoria, MD Medical Clinic Inc. · 502 Euclid Ave. #103, National City, CA 91950 · (619) 267-5884</span>
+    <span>This site is for general information and is not medical advice.</span>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Quick actions">
+  <a href="tel:+16192675884"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Call</a>
+  <a href="https://maps.apple.com/?address=502%20Euclid%20Ave%20%23103%2C%20National%20City%2C%20CA%2091950&amp;q=Dr.%20Trimor-Tamoria" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Directions</a>
+  <a class="primary" href="#visit">Book a visit</a>
+</nav>
+
+<script>
+// Show the styled fallback when a product image hasn't been added yet
+document.querySelectorAll('.device img, .skin-img img').forEach(function(img){
+  function fail(){ img.parentElement.classList.add('noimg'); }
+  if (img.complete && img.naturalWidth === 0) fail();
+  img.addEventListener('error', fail);
+});
+
+// Tap-to-open on touch screens (hover covers mouse users)
+document.querySelectorAll('.device').forEach(function(card){
+  card.addEventListener('click', function(e){
+    if (e.target.closest('a')) return;
+    var wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.device.open').forEach(function(c){ c.classList.remove('open'); });
+    if (!wasOpen) card.classList.add('open');
+  });
+});
+
+// Category filter
+var chips = document.querySelectorAll('.chip');
+chips.forEach(function(chip){
+  chip.addEventListener('click', function(){
+    chips.forEach(function(c){ c.setAttribute('aria-pressed', c === chip); });
+    var f = chip.dataset.f;
+    document.querySelectorAll('.device').forEach(function(d){ d.hidden = f !== 'all' && d.dataset.cat.split(' ').indexOf(f) === -1; });
+  });
+});
+
+
+// Highlight today's hours
+(function(){var r=document.querySelector('.hours tr[data-d="'+new Date().getDay()+'"]'); if(r) r.classList.add('today');})();
+
+// Booking form: opens the visitor's texting app with a pre-filled message to the office
+var OFFICE_TEXT = '+16193999100';
+document.getElementById('book').addEventListener('submit', function(e){
+  e.preventDefault();
+  var val = function(id){ return document.getElementById(id).value.trim(); };
+  var name = val('b-name'), phone = val('b-phone'), email = val('b-email'),
+      type = val('b-type'), note = val('b-note');
+  var when = (document.querySelector('input[name="when"]:checked') || {}).value || '';
+  var msg = document.getElementById('b-msg');
+  if (!name || !phone){ msg.textContent = 'Add your name and phone number so the office can reach you.'; return; }
+
+  var lines = [
+    'Hi Dr. Trimor-Tamoria\'s office, I would like to book a visit.',
+    '',
+    'Name: ' + name,
+    'Phone: ' + phone
+  ];
+  if (email) lines.push('Email: ' + email);
+  lines.push('Visit type: ' + type);
+  if (when) lines.push('How soon: ' + when);
+  if (note) lines.push('Notes: ' + note);
+  var body = encodeURIComponent(lines.join('\n'));
+
+  // iPhone/iPad/Mac use "&body=", Android uses "?body="
+  var apple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
+  window.location.href = 'sms:' + OFFICE_TEXT + (apple ? '&' : '?') + 'body=' + body;
+
+  msg.textContent = 'Opening your messages app. If nothing opens, text (619) 399-9100 or call (619) 267-5884.';
+});
+</script>
+</body>
+</html>
