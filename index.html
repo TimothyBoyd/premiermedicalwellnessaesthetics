@@ -4,7 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dr. Trimor-Tamoria</title>
-<meta name="description" content="Primary care and aesthetic wellness with Dr. Maria Flora G. Trimor-Tamoria in National City, CA — family medicine, care, body contouring, skin rejuvenation and medical-grade skincare under one roof.">
+<meta name="description" content="Maria Flora G. Trimor-Tamoria, MD in National City, CA. Primary care, wellness and function, and medical aesthetics for adults 18 and older.">
+<!-- Link preview for iMessage, Facebook and texts -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maria Flora G. Trimor-Tamoria, MD">
+<meta property="og:title" content="Maria Flora G. Trimor-Tamoria, MD">
+<meta property="og:description" content="Primary care, wellness &amp; function, and medical aesthetics in National City, CA. 619-267-5884">
+<meta property="og:url" content="https://premiermedicalwellnessaesthetics.com/">
+<meta property="og:image" content="https://premiermedicalwellnessaesthetics.com/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600&display=swap">
@@ -62,6 +74,41 @@ p{margin:0}
     radial-gradient(55% 65% at 85% 20%,var(--lilac) 0%,transparent 70%),
     radial-gradient(70% 80% at 60% 100%,var(--blush) 0%,transparent 70%),
     #efe8ec;}
+/* Hero background options */
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-grid{position:relative;z-index:1}
+.bg-ocean{position:absolute;inset:0;width:100%;height:100%;display:none}
+.bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;z-index:1}
+.hero-card[data-bg="ocean"] .bg-video[data-for="ocean"].ready,
+.hero-card[data-bg="tropical"] .bg-video[data-for="tropical"].ready{display:block}
+/* White layer over the video keeps the text readable */
+.bg-veil{position:absolute;inset:0;z-index:2;display:none;
+  background:linear-gradient(90deg,rgba(255,255,255,.82) 0%,rgba(255,255,255,.62) 48%,rgba(255,255,255,.38) 100%)}
+.hero-card.video-on .bg-veil{display:block}
+.bg-tropical{position:absolute;inset:0;display:none;
+  background:linear-gradient(180deg,#bfe3ec 0%,#e3f1ef 45%,#fbe3cf 72%,#f6cdb4 100%);background-size:cover;background-position:center}
+.bg-tropical.has-photo{background:linear-gradient(90deg,rgba(255,255,255,.72),rgba(255,255,255,.25) 60%,rgba(255,255,255,0)),var(--tropical-photo) center/cover no-repeat}
+.bg-tropical.has-photo .palms{display:none}
+.palms{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;max-height:100%;fill:#1f3d3a}
+.palms use{opacity:.88}
+.hero-card[data-bg] .hero h1 em,.hero-card[data-bg] h1 em{color:#1f6fa3;text-shadow:none}
+.palms .sea{fill:#7fc1cf;opacity:.75}
+.palms .sea2{fill:#4fa3b6;opacity:.7}
+.hero-card[data-bg="ocean"]{background:linear-gradient(180deg,#eaf5fb 0%,#d3eaf5 45%,#a9d3e8 100%)}
+.hero-card[data-bg="ocean"] .bg-ocean{display:block}
+.hero-card[data-bg="tropical"] .bg-tropical{display:block}
+.hero-card[data-bg] .portrait-placeholder{background:rgba(255,255,255,.35);border-color:rgba(22,20,26,.22)}
+.hero-card[data-bg] .hero-lede{color:#26303a}
+.bg-picker{position:absolute;z-index:3;right:var(--gutter);top:96px;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:12px;box-shadow:0 4px 18px rgba(20,40,60,.12)}
+.bg-picker span{padding:0 8px;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+.bg-picker button{font:600 12px/1 var(--body);padding:8px 12px;border-radius:999px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.bg-picker button[aria-pressed="true"]{background:var(--ink);color:#fff}
+
+/* Letterhead */
+.letterhead{display:flex;flex-direction:column;gap:3px;font-size:14px;color:#2c3540;line-height:1.45}
+.letterhead strong{font:600 clamp(18px,1.7vw,22px)/1.2 var(--display);color:var(--ink);letter-spacing:-.01em;margin-bottom:2px}
+.letterhead a{text-decoration:none;font-weight:600;color:var(--ink)}
+
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:end;padding-block:72px 48px}
 .hero-copy{display:flex;flex-direction:column;gap:28px;min-width:0;padding-bottom:24px}
 .hero h1{font-size:clamp(44px,7.2vw,96px);line-height:.92;font-weight:600;text-transform:uppercase;letter-spacing:-.035em}
@@ -110,10 +157,9 @@ section{padding-block:clamp(64px,9vw,120px)}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
 .chip{font:500 14px/1 var(--body);padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-@media (max-width:1080px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:760px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:460px){.gallery{grid-template-columns:1fr}}
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.gallery .device{flex:0 0 calc((100% - 42px) / 4)}
+@media (max-width:1080px){.gallery .device{flex-basis:calc((100% - 28px) / 3)}}
 
 .device{position:relative;aspect-ratio:3/4;max-width:100%;border-radius:var(--r-md);overflow:hidden;background:var(--mist);isolation:isolate;cursor:default;outline:none}
 .device img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14% 12% 32%;transition:transform .6s cubic-bezier(.2,.7,.2,1);mix-blend-mode:multiply}
@@ -160,6 +206,14 @@ section{padding-block:clamp(64px,9vw,120px)}
 .skin-img.noimg img{display:none}
 @media (max-width:820px){.skin{grid-template-columns:1fr}}
 
+/* Instagram */
+.ig-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+.ig-grid .instagram-media{min-width:0!important;width:100%!important;margin:0!important;border-radius:var(--r-md)!important}
+.ig-empty{grid-column:1/-1;border-radius:var(--r-lg);padding:clamp(28px,4vw,44px);background:linear-gradient(150deg,#f3e9ef,#e6eef3);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.ig-empty p{font:600 clamp(20px,2.2vw,26px)/1.2 var(--display);max-width:28ch}
+@media (max-width:900px){.ig-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.ig-grid{grid-template-columns:1fr}}
+
 /* Visit / booking */
 .visit{border-radius:var(--r-lg);overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;
   background:radial-gradient(70% 90% at 0% 0%,var(--sage),transparent 70%),radial-gradient(70% 90% at 100% 100%,var(--blush),transparent 70%),#efe9ed}
@@ -167,6 +221,7 @@ section{padding-block:clamp(64px,9vw,120px)}
 .visit-copy h2{font-size:clamp(32px,4vw,54px);line-height:1;font-weight:600;text-transform:uppercase;letter-spacing:-.03em}
 .visit dl{display:grid;grid-template-columns:auto 1fr;gap:10px 22px;margin:8px 0 0;font-size:15px}
 .visit dt{color:var(--ink-soft)}
+.age-note{font-size:14px;font-weight:600;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.65);align-self:flex-start}
 .visit dd{margin:0}
 form{padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,.6)}
 label{font-size:13px;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px}
@@ -184,6 +239,20 @@ textarea{min-height:90px;resize:vertical}
 @media (max-width:820px){.visit{grid-template-columns:1fr}}
 @media (max-width:440px){.form-row{grid-template-columns:1fr}}
 
+
+/* Introducing */
+.intro-grid{display:grid;grid-template-columns:1fr 1fr 1.35fr;gap:16px;align-items:stretch}
+.intro-card{border-radius:var(--r-lg);background:var(--mist);padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.intro-feature{background:linear-gradient(150deg,#e3eef3,#ece4ee)}
+.intro-img{height:170px;border-radius:var(--r-md);background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:6px}
+.intro-img img{max-height:150px;width:auto;object-fit:contain;mix-blend-mode:multiply}
+.intro-card h3{font-size:19px;line-height:1.3;font-weight:600}
+.intro-card > p:not(.eyebrow){color:var(--ink-soft);font-size:15px}
+.specs{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:0}
+.specs li{font-size:14.5px;padding:9px 0 9px 22px;border-top:1px solid rgba(22,20,26,.1);position:relative}
+.specs li::before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+@media (max-width:1000px){.intro-grid{grid-template-columns:1fr 1fr}.intro-feature{grid-column:1/-1}}
+@media (max-width:640px){.intro-grid{grid-template-columns:1fr}}
 
 /* About */
 .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,72px);align-items:start}
@@ -261,10 +330,10 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
   .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*var(--gutter)) 16px;padding-inline:var(--gutter)}
   .filters::-webkit-scrollbar{display:none}
   .chip{flex:0 0 auto}
-  .gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  .gallery{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
     margin-inline:calc(-1*var(--gutter));padding-inline:var(--gutter);scroll-padding-inline:var(--gutter);padding-bottom:4px}
   .gallery::-webkit-scrollbar{display:none}
-  .device{flex:0 0 78%;aspect-ratio:4/5;scroll-snap-align:start}
+  .gallery .device{flex:0 0 78%;aspect-ratio:4/5;scroll-snap-align:start}
   .device .reveal{padding:18px;gap:10px}
   .device .reveal p{font-size:13.5px}
   .swipe-hint{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
@@ -287,6 +356,14 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
 
   footer{padding-block:28px 24px}
 
+  .bg-picker{top:auto;bottom:14px;right:50%;transform:translateX(50%)}
+  .letterhead{font-size:13px}
+  .bg-veil{background:rgba(255,255,255,.66)}
+  .intro-img{height:130px}
+  .intro-img img{max-height:112px}
+  .hero-grid{padding-bottom:72px}
+  .ig-empty .btn{align-self:stretch;justify-content:center}
+
   /* Sticky action bar */
   body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
   .mbar{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:30;
@@ -305,12 +382,13 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
 <header class="nav">
   <div class="wrap">
     <nav class="nav-inner" aria-label="Main">
-      <a class="logo" href="#top">Dr. Trimor-Tamoria <span>· Family Medicine &amp; Aesthetics</span></a>
+      <a class="logo" href="#top">Maria Flora G. Trimor-Tamoria, MD</a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#technology">Technology</a></li>
         <li><a href="#skincare">Skincare</a></li>
+        <li><a href="#videos">Videos</a></li>
         <li><a href="#visit">Visit</a></li>
       </ul>
       <a class="btn btn-dark" href="#visit">Book a visit</a>
@@ -322,17 +400,51 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
   <!-- HERO -->
   <div class="hero">
     <div class="hero-card">
+      <!-- HERO BACKGROUND: two options for the client to choose. Delete the one not chosen, plus the .bg-picker below. -->
+      <div class="hero-bg" aria-hidden="true">
+        <canvas class="bg-ocean" id="ocean"></canvas>
+        <!-- HD video backgrounds: save the clips as media/ocean.mp4 and media/palms.mp4 -->
+        <video class="bg-video" data-for="ocean" data-src="media/ocean.mp4" muted loop playsinline preload="none"></video>
+        <video class="bg-video" data-for="tropical" data-src="media/palms.mp4" muted loop playsinline preload="none"></video>
+        <div class="bg-veil"></div>
+        <div class="bg-tropical">
+          <svg class="palms" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax meet">
+            <defs>
+              <g id="palm">
+                <path d="M-7 0 C 2 -100, -10 -200, 16 -300 L 28 -300 C 4 -200, 14 -100, 7 0 Z"/>
+                <g transform="translate(22 -302)"><path d="M0 0 Q -71.1 -61.8 -147.7 29.0 Q -76.6 -30.3 0 0Z"/><path d="M0 0 Q -53.1 -60.0 -121.2 -50.0 Q -68.1 -34.0 0 0Z"/><path d="M0 0 Q -23.8 -59.6 -68.8 -103.3 Q -45.1 -44.7 0 0Z"/><path d="M0 0 Q 6.8 -54.3 -8.3 -104.6 Q -15.1 -52.4 0 0Z"/><path d="M0 0 Q 42.5 -50.6 62.5 -113.3 Q 20.0 -63.6 0 0Z"/><path d="M0 0 Q 68.1 -34.0 121.2 -50.0 Q 53.1 -60.0 0 0Z"/><path d="M0 0 Q 76.5 -27.6 148.5 34.1 Q 72.0 -59.3 0 0Z"/><path d="M0 0 Q -48.4 -18.1 -89.3 72.5 Q -40.9 2.6 0 0Z"/><path d="M0 0 Q 40.9 2.6 89.3 72.5 Q 48.4 -18.1 0 0Z"/><circle r="9"/></g>
+              </g>
+            </defs>
+            <path class="sea" d="M0 470 C 200 455, 400 485, 600 468 S 1000 455, 1200 470 L1200 600 L0 600 Z"/>
+            <path class="sea2" d="M0 505 C 220 492, 420 520, 640 503 S 1020 495, 1200 508 L1200 600 L0 600 Z"/>
+            <use href="#palm" transform="translate(1040 600) scale(1.25)"/>
+            <use href="#palm" transform="translate(1135 600) scale(.95) rotate(8)"/>
+            <use href="#palm" transform="translate(-10 600) scale(.8) rotate(-8)"/>
+            <use href="#palm" transform="translate(860 600) scale(.72) rotate(-4)" style="opacity:.55"/>
+          </svg>
+        </div>
+      </div>
+      <div class="bg-picker" role="group" aria-label="Preview background">
+        <span>Background</span>
+        <button type="button" id="bg-ocean" data-bg="ocean" aria-pressed="true">Ocean</button>
+        <button type="button" id="bg-tropical" data-bg="tropical" aria-pressed="false">Tropical</button>
+      </div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Primary care · Wellness &amp; function · Aesthetics · National City, CA</p>
+          <div class="letterhead">
+            <strong>Maria Flora G. Trimor-Tamoria, MD</strong>
+            <span>Diplomate, American Board of Family Practice</span>
+            <span>502 Euclid Avenue, Suite 103 · National City, CA 91950</span>
+            <span>Tel. No.: <a href="tel:+16192675884">619-267-5884</a></span>
+          </div>
           <h1>Whole-body care, <em>one</em> physician</h1>
-          <p class="hero-lede">For more than 22 years, Dr. Maria Flora G. Trimor-Tamoria has cared for patients as if they were family. Today her practice brings primary care and medical aesthetics together, so the doctor who knows your health history is the one planning your treatments.</p>
+          <p class="hero-lede">For more than 22 years, Dr. Trimor-Tamoria has cared for patients as if they were family. Today her practice brings primary care, wellness and medical aesthetics together, so the doctor who knows your health history is the one planning your treatments.</p>
           <div class="hero-actions">
             <a class="btn btn-dark" href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Book an appointment</a>
             <a class="btn btn-light" href="#technology">Explore treatments</a>
           </div>
           <div class="hero-pillars" aria-label="Highlights">
-            <span>22+ years in practice</span><span>Family medicine &amp; geriatrics</span><span>Laser &amp; aesthetic treatments</span>
+            <span>22+ years in practice</span><span>Primary care &amp; geriatrics</span><span>Laser &amp; aesthetic treatments</span><span>Adults 18 and older</span>
           </div>
         </div>
 
@@ -357,15 +469,52 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
       <div class="about-copy">
         <p class="eyebrow">Meet your doctor</p>
         <h2>A true ally in your care</h2>
-        <p>Dr. Maria Flora G. Trimor-Tamoria is a dedicated physician specializing in family primary care and family medicine, with more than 22 years in practice and a special interest in geriatrics. With a passion for holistic patient care, she has expanded her expertise to include aesthetics, wellness and function, offering a comprehensive approach to health and beauty.</p>
+        <p>Dr. Maria Flora G. Trimor-Tamoria is a dedicated physician specializing in primary care, with more than 22 years in practice and a special interest in geriatrics. With a passion for holistic patient care, she has expanded her expertise to include aesthetics, wellness and function, offering a comprehensive approach to health and beauty.</p>
         <p>Dr. Trimor-Tamoria is committed to helping her patients look, feel and function their best, integrating medical expertise with the latest advancements in aesthetic and wellness treatments. She takes pride in a compassionate, thorough and professional approach, and cares for every patient as if they were family.</p>
         <p>She is proud to serve the National City and San Diego area, bringing high-quality, patient-centered care to her community.</p>
         <ul class="focus">
-          <li><strong>Family medicine</strong><span>Care for adults and families, from check-ups to long-term conditions</span></li>
+          <li><strong>Primary care</strong><span>Care for adults 18 and older, from check-ups to long-term conditions</span></li>
           <li><strong>Geriatrics</strong><span>Attentive care for older adults and their caregivers</span></li>
           <li><strong>Wellness &amp; function</strong><span>Weight loss, pain relief and recovery to help you move and feel better</span></li>
           <li><strong>Laser aesthetics</strong><span>Skin and body treatments planned with your full health picture in mind</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRODUCING -->
+  <section id="introducing" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Introducing</p>
+          <h2>FDA-cleared technology, now in National City</h2>
+        </div>
+      </div>
+      <div class="intro-grid">
+        <article class="intro-card">
+          <div class="intro-img"><img src="product_images/emsculpt.jpg" alt="Emsculpt NEO" loading="lazy"></div>
+          <p class="eyebrow">Emsculpt NEO</p>
+          <h3>FDA-cleared technology for muscle strengthening, toning and noninvasive body contouring.</h3>
+        </article>
+        <article class="intro-card">
+          <div class="intro-img"><img src="product_images/emsella.jpg" alt="Emsella chair" loading="lazy"></div>
+          <p class="eyebrow">Emsella Chair</p>
+          <h3>FDA-cleared for the treatment of urinary incontinence in men and women through pelvic floor muscle stimulation.</h3>
+        </article>
+        <article class="intro-card intro-feature">
+          <div class="intro-img"><img src="product_images/xerf.png" alt="XERF" loading="lazy"></div>
+          <p class="eyebrow">XERF™</p>
+          <h3>The world's first multifrequency monopolar radiofrequency technology for structural skin tightening.</h3>
+          <p>FDA-cleared multifrequency radiofrequency technology for skin remodeling.</p>
+          <ul class="specs">
+            <li>Dual-frequency technology: 6.78 MHz and 2 MHz</li>
+            <li>Three adjustable treatment depths</li>
+            <li>Advanced integrated cooling</li>
+            <li>No needles or numbing required</li>
+            <li>Minimal to no downtime</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
@@ -382,7 +531,7 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
       <div class="paths">
         <article class="path path-care">
           <p class="eyebrow">Primary care</p>
-          <h3>Family medicine for every age</h3>
+          <h3>Primary care for adults</h3>
           <ul>
             <li>Annual physicals</li><li>Preventive screenings</li>
             <li>Chronic condition care</li><li>Sick visits</li>
@@ -544,6 +693,19 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
           </div>
         </article>
 
+        <article class="device" tabindex="0" data-cat="skin">
+          <img src="product_images/agnes.jpg" alt="Agnes RF device" loading="lazy">
+          <div class="fallback">Agnes<br>RF</div>
+          <span class="tag">Precision RF</span>
+          <div class="meta"><span class="maker">Agnes Medical</span><h3>Agnes Radiofrequency</h3></div>
+          <div class="reveal">
+            <span class="maker">Agnes Medical · Precision RF</span><h3>Agnes Radiofrequency</h3>
+            <p>Precision radiofrequency delivered through fine insulated microneedles to treat small, hard-to-reach areas that other devices can't target well, such as under-eye bags, the jawline and acne.</p>
+            <span class="uses">Under-eye · jowls · jawline · acne</span>
+            <a href="https://us.agnesmedical.com/products/agnes/" target="_blank" rel="noopener">Visit Agnes ↗</a>
+          </div>
+        </article>
+
         <article class="device" tabindex="0" data-cat="laser">
           <img src="product_images/palomaricon.jpg" alt="Cynosure Palomar Icon aesthetic system" loading="lazy">
           <div class="fallback">Palomar<br>Icon</div>
@@ -597,7 +759,7 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
         </article>
       </div>
 
-      <p class="swipe-hint" aria-hidden="true"><span>Swipe to see all 12</span><span>Tap a card for details →</span></p>
+      <p class="swipe-hint" aria-hidden="true"><span>Swipe to see all 13</span><span>Tap a card for details →</span></p>
       <p class="fine">Device names and trademarks belong to their manufacturers. Results vary by person. Every treatment begins with a consultation with Dr. Trimor-Tamoria to confirm it's right for you.</p>
     </div>
   </section>
@@ -609,12 +771,30 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
         <p class="eyebrow">Medical-grade skincare</p>
         <h2>Keep results going at home with Obagi</h2>
         <p>Obagi Medical products are designed for use under physician guidance. Dr. Trimor-Tamoria builds a home regimen that supports your in-office treatments, from vitamin C serums to targeted systems for tone and texture.</p>
-        <a class="btn btn-dark" href="https://www.obagi.com/" target="_blank" rel="noopener" style="align-self:flex-start">Explore Obagi ↗</a>
+        <p><strong style="color:var(--ink)">Available for purchase in our office.</strong></p>
+        <a class="btn btn-dark" href="#visit" style="align-self:flex-start">Ask about Obagi</a>
       </div>
       <div class="skin-img">
         <img src="product_images/obagi.jpg" alt="Obagi skincare products" loading="lazy">
         <div class="fallback">OBAGI</div>
       </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM VIDEOS -->
+  <section id="videos" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">On Instagram</p>
+          <h2>See treatments in action</h2>
+          <p>Watch treatment videos, results and tips from the office.</p>
+        </div>
+        <div class="head-actions">
+          <a class="btn btn-ghost" href="https://www.instagram.com/dr.mfgtrimortamoria/" target="_blank" rel="noopener">@dr.mfgtrimortamoria ↗</a>
+        </div>
+      </div>
+      <div class="ig-grid" id="ig-grid"></div>
     </div>
   </section>
 
@@ -626,6 +806,7 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
           <p class="eyebrow">Visit the practice</p>
           <h2>Book your visit</h2>
           <p style="max-width:44ch;color:#3e3843">Fill this out and tap <strong>Text my request</strong>. Your messages app opens with everything filled in, ready to send to the office at (619) 399-9100.</p>
+          <p class="age-note">Practice limited to patients 18 years old and above.</p>
           <dl>
             <dt>Phone</dt><dd><a href="tel:+16192675884" style="text-decoration:none;font-weight:600">(619) 267-5884</a></dd>
             <dt>Address</dt><dd>502 Euclid Ave., #103<br>National City, CA 91950 · <a href="https://maps.apple.com/?address=502%20Euclid%20Ave%20%23103%2C%20National%20City%2C%20CA%2091950&amp;q=Dr.%20Trimor-Tamoria" target="_blank" rel="noopener">Directions ↗</a></dd>
@@ -653,6 +834,7 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
               <option>Wellness &amp; function (weight loss, pain relief)</option>
               <option>Body contouring</option>
               <option>Skin treatment or facial</option>
+              <option>Obagi skincare</option>
             </select>
           </label>
           <fieldset class="when">
@@ -675,7 +857,7 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
 <footer>
   <div class="wrap foot">
     <span>© 2026 Maria Flora G. Trimor-Tamoria, MD Medical Clinic Inc. · 502 Euclid Ave. #103, National City, CA 91950 · (619) 267-5884</span>
-    <span>This site is for general information and is not medical advice.</span>
+    <span>Practice limited to patients 18 years old and above. This site is for general information and is not medical advice.</span>
   </div>
 </footer>
 
@@ -689,6 +871,13 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
 // Show the styled fallback when a product image hasn't been added yet
 document.querySelectorAll('.device img, .skin-img img').forEach(function(img){
   function fail(){ img.parentElement.classList.add('noimg'); }
+  if (img.complete && img.naturalWidth === 0) fail();
+  img.addEventListener('error', fail);
+});
+
+// Hide highlight images that haven't been added yet
+document.querySelectorAll('.intro-img img').forEach(function(img){
+  function fail(){ img.parentElement.hidden = true; }
   if (img.complete && img.naturalWidth === 0) fail();
   img.addEventListener('error', fail);
 });
@@ -713,6 +902,84 @@ chips.forEach(function(chip){
   });
 });
 
+
+// ===== Hero background picker (remove once the client chooses) =====
+(function(){
+  var card = document.querySelector('.hero-card');
+  var saved = 'ocean';
+  try { saved = localStorage.getItem('heroBg') || 'ocean'; } catch(e){}
+  var stillBg = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function playVideo(v){
+    card.classList.remove('video-on');
+    document.querySelectorAll('.bg-video').forEach(function(vid){
+      if (vid.dataset.for !== v){ vid.pause(); return; }
+      if (stillBg) return;
+      if (vid.classList.contains('ready')){ card.classList.add('video-on'); vid.play().catch(function(){}); return; }
+      if (!vid.src){
+        vid.addEventListener('playing', function(){ vid.classList.add('ready'); if (card.getAttribute('data-bg') === vid.dataset.for) card.classList.add('video-on'); });
+        vid.src = vid.dataset.src;
+      }
+      vid.play().catch(function(){});
+    });
+  }
+  function setBg(v){
+    card.setAttribute('data-bg', v);
+    playVideo(v);
+    document.querySelectorAll('.bg-picker button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.bg === v); });
+    try { localStorage.setItem('heroBg', v); } catch(e){}
+  }
+  document.querySelectorAll('.bg-picker button').forEach(function(b){ b.addEventListener('click', function(){ setBg(b.dataset.bg); }); });
+  setBg(saved);
+
+  // Tropical: uses the photo from her original site if product_images/tropical.jpg exists, otherwise drawn palms
+  var t = new Image();
+  t.onload = function(){ var el = document.querySelector('.bg-tropical'); el.style.setProperty('--tropical-photo', 'url(product_images/tropical.jpg)'); el.classList.add('has-photo'); };
+  t.src = 'product_images/tropical.jpg';
+
+  // Ocean: animated rippling waves
+  var cv = document.getElementById('ocean'), ctx = cv.getContext('2d');
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 0, H = 0, running = true, t0 = performance.now();
+  function size(){ var r = Math.min(window.devicePixelRatio || 1, 2); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * r; cv.height = H * r; ctx.setTransform(r,0,0,r,0,0); }
+  var layers = [
+    {y:.50, amp:10, len:520, speed:.00018, color:'rgba(150,204,228,.55)'},
+    {y:.60, amp:14, len:420, speed:-.00024, color:'rgba(110,182,218,.55)'},
+    {y:.71, amp:16, len:360, speed:.00030, color:'rgba(70,152,200,.55)'},
+    {y:.83, amp:18, len:300, speed:-.00036, color:'rgba(38,118,176,.6)'}
+  ];
+  function wave(L, t, x){ return Math.sin(x / L.len * 6.283 + t * L.speed * 4) * L.amp + Math.sin(x / (L.len * .47) * 6.283 - t * L.speed * 2.6) * L.amp * .35; }
+  function draw(now){
+    var t = now - t0; ctx.clearRect(0,0,W,H);
+    layers.forEach(function(L){
+      ctx.beginPath(); ctx.moveTo(0,H);
+      for (var x = 0; x <= W + 8; x += 8){ ctx.lineTo(x, H * L.y + wave(L, t, x)); }
+      ctx.lineTo(W,H); ctx.closePath(); ctx.fillStyle = L.color; ctx.fill();
+      ctx.beginPath();
+      for (var x2 = 0; x2 <= W + 8; x2 += 8){ var yy = H * L.y + wave(L, t, x2); x2 ? ctx.lineTo(x2, yy) : ctx.moveTo(x2, yy); }
+      ctx.strokeStyle = 'rgba(255,255,255,.45)'; ctx.lineWidth = 1.2; ctx.stroke();
+    });
+    if (running && !still) requestAnimationFrame(draw);
+  }
+  size(); window.addEventListener('resize', size);
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ var vis = es[0].isIntersecting; if (vis && !running){ running = true; requestAnimationFrame(draw); } else if (!vis) running = false; }).observe(card);
+  }
+  requestAnimationFrame(draw);
+})();
+
+// ===== Instagram videos: paste post or reel links here =====
+var IG_POSTS = [
+  // 'https://www.instagram.com/reel/XXXXXXXXXXX/',
+];
+(function(){
+  var grid = document.getElementById('ig-grid');
+  if (!IG_POSTS.length){
+    grid.innerHTML = '<div class="ig-empty"><p>Follow along for treatment videos and results.</p><a class="btn btn-dark" href="https://www.instagram.com/dr.mfgtrimortamoria/" target="_blank" rel="noopener">Follow on Instagram ↗</a></div>';
+    return;
+  }
+  grid.innerHTML = IG_POSTS.map(function(u){ return '<blockquote class="instagram-media" data-instgrm-permalink="' + u + '" data-instgrm-version="14"><a href="' + u + '" target="_blank" rel="noopener">View on Instagram</a></blockquote>'; }).join('');
+  var sc = document.createElement('script'); sc.async = true; sc.src = 'https://www.instagram.com/embed.js'; document.body.appendChild(sc);
+})();
 
 // Highlight today's hours
 (function(){var r=document.querySelector('.hours tr[data-d="'+new Date().getDay()+'"]'); if(r) r.classList.add('today');})();
