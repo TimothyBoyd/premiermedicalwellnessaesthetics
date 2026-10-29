@@ -428,7 +428,7 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
       <div class="hero-bg" aria-hidden="true">
         <canvas class="bg-ocean" id="ocean"></canvas>
         <!-- HD ocean video: media/ocean.mp4 -->
-        <video class="bg-video" data-for="ocean" data-src="media/ocean.mp4" muted loop playsinline preload="none"></video>
+        <video class="bg-video" data-for="ocean" data-src="media/ocean.mp4" autoplay muted loop playsinline webkit-playsinline preload="none" disablepictureinpicture></video>
         <div class="bg-veil"></div>
       </div>
       <div class="wrap hero-grid">
@@ -910,10 +910,26 @@ chips.forEach(function(chip){
   var card = document.querySelector('.hero-card');
   var stillBg = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function startVideo(vid, onReady){
-    if (stillBg) return;
-    vid.addEventListener('playing', function(){ vid.classList.add('ready'); if (onReady) onReady(); });
+    function show(){ if (!vid.classList.contains('ready')){ vid.classList.add('ready'); if (onReady) onReady(); } }
+    // iPhone only autoplays videos that are muted and inline
+    vid.muted = true; vid.defaultMuted = true; vid.playsInline = true;
+    vid.setAttribute('muted', ''); vid.setAttribute('playsinline', ''); vid.setAttribute('webkit-playsinline', '');
+    if (stillBg){
+      // Reduce Motion is on: show a still first frame instead of playing
+      vid.preload = 'auto';
+      vid.addEventListener('loadeddata', show);
+      vid.src = vid.dataset.src + '#t=0.1';
+      return;
+    }
+    vid.autoplay = true; vid.preload = 'auto';
+    vid.addEventListener('playing', show);
     vid.src = vid.dataset.src;
-    vid.play().catch(function(){});
+    var tryPlay = function(){ var pr = vid.play(); if (pr && pr.catch) pr.catch(function(){}); };
+    tryPlay();
+    // Low Power Mode blocks autoplay: start on the first tap or scroll instead
+    ['touchstart','click','scroll'].forEach(function(ev){
+      window.addEventListener(ev, function once(){ if (vid.paused) tryPlay(); window.removeEventListener(ev, once); }, {passive:true});
+    });
   }
   startVideo(document.querySelector('.bg-video[data-for="ocean"]'), function(){ card.classList.add('video-on'); });
 
