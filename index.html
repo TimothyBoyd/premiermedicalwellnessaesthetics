@@ -15,6 +15,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="icon" type="image/png" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -99,10 +100,13 @@ p{margin:0}
 .hero-card[data-bg="tropical"] .bg-tropical{display:block}
 .hero-card[data-bg] .portrait-placeholder{background:rgba(255,255,255,.35);border-color:rgba(22,20,26,.22)}
 .hero-card[data-bg] .hero-lede{color:#26303a}
-.bg-picker{position:absolute;z-index:3;right:var(--gutter);top:96px;display:flex;align-items:center;gap:4px;padding:5px;border-radius:999px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:12px;box-shadow:0 4px 18px rgba(20,40,60,.12)}
-.bg-picker span{padding:0 8px;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase;font-size:11px}
-.bg-picker button{font:600 12px/1 var(--body);padding:8px 12px;border-radius:999px;border:0;background:transparent;color:var(--ink);cursor:pointer}
-.bg-picker button[aria-pressed="true"]{background:var(--ink);color:#fff}
+/* Page-wide palm background (everything below the hero) */
+.page-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.page-bg .bg-tropical{display:block}
+.page-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}
+.page-video.ready{opacity:1}
+.page-veil{position:absolute;inset:0;background:rgba(255,255,255,.8)}
+main,footer{position:relative;z-index:1}
 
 /* Letterhead */
 .letterhead{display:flex;flex-direction:column;gap:3px;font-size:14px;color:#2c3540;line-height:1.45}
@@ -356,12 +360,11 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
 
   footer{padding-block:28px 24px}
 
-  .bg-picker{top:auto;bottom:14px;right:50%;transform:translateX(50%)}
+  .page-veil{background:rgba(255,255,255,.84)}
   .letterhead{font-size:13px}
   .bg-veil{background:rgba(255,255,255,.66)}
   .intro-img{height:130px}
   .intro-img img{max-height:112px}
-  .hero-grid{padding-bottom:72px}
   .ig-empty .btn{align-self:stretch;justify-content:center}
 
   /* Sticky action bar */
@@ -379,6 +382,28 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
 
 </head>
 <body>
+<!-- PAGE BACKGROUND: palm trees video (media/palms.mp4) under a white layer; drawn palms until it loads -->
+<div class="page-bg" aria-hidden="true">
+        <div class="bg-tropical" id="page-palms">
+          <svg class="palms" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax meet">
+            <defs>
+              <g id="palm">
+                <path d="M-7 0 C 2 -100, -10 -200, 16 -300 L 28 -300 C 4 -200, 14 -100, 7 0 Z"/>
+                <g transform="translate(22 -302)"><path d="M0 0 Q -71.1 -61.8 -147.7 29.0 Q -76.6 -30.3 0 0Z"/><path d="M0 0 Q -53.1 -60.0 -121.2 -50.0 Q -68.1 -34.0 0 0Z"/><path d="M0 0 Q -23.8 -59.6 -68.8 -103.3 Q -45.1 -44.7 0 0Z"/><path d="M0 0 Q 6.8 -54.3 -8.3 -104.6 Q -15.1 -52.4 0 0Z"/><path d="M0 0 Q 42.5 -50.6 62.5 -113.3 Q 20.0 -63.6 0 0Z"/><path d="M0 0 Q 68.1 -34.0 121.2 -50.0 Q 53.1 -60.0 0 0Z"/><path d="M0 0 Q 76.5 -27.6 148.5 34.1 Q 72.0 -59.3 0 0Z"/><path d="M0 0 Q -48.4 -18.1 -89.3 72.5 Q -40.9 2.6 0 0Z"/><path d="M0 0 Q 40.9 2.6 89.3 72.5 Q 48.4 -18.1 0 0Z"/><circle r="9"/></g>
+              </g>
+            </defs>
+            <path class="sea" d="M0 470 C 200 455, 400 485, 600 468 S 1000 455, 1200 470 L1200 600 L0 600 Z"/>
+            <path class="sea2" d="M0 505 C 220 492, 420 520, 640 503 S 1020 495, 1200 508 L1200 600 L0 600 Z"/>
+            <use href="#palm" transform="translate(1040 600) scale(1.25)"/>
+            <use href="#palm" transform="translate(1135 600) scale(.95) rotate(8)"/>
+            <use href="#palm" transform="translate(-10 600) scale(.8) rotate(-8)"/>
+            <use href="#palm" transform="translate(860 600) scale(.72) rotate(-4)" style="opacity:.55"/>
+          </svg>
+        </div>
+  <video class="page-video" data-src="media/palms.mp4" muted loop playsinline preload="none"></video>
+  <div class="page-veil"></div>
+</div>
+
 <header class="nav">
   <div class="wrap">
     <nav class="nav-inner" aria-label="Main">
@@ -399,35 +424,13 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
 <main id="top">
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-card">
-      <!-- HERO BACKGROUND: two options for the client to choose. Delete the one not chosen, plus the .bg-picker below. -->
+    <div class="hero-card" data-bg="ocean">
+      <!-- HERO BACKGROUND: ocean waves video (media/ocean.mp4), drawn waves until it loads -->
       <div class="hero-bg" aria-hidden="true">
         <canvas class="bg-ocean" id="ocean"></canvas>
-        <!-- HD video backgrounds: save the clips as media/ocean.mp4 and media/palms.mp4 -->
+        <!-- HD ocean video: media/ocean.mp4 -->
         <video class="bg-video" data-for="ocean" data-src="media/ocean.mp4" muted loop playsinline preload="none"></video>
-        <video class="bg-video" data-for="tropical" data-src="media/palms.mp4" muted loop playsinline preload="none"></video>
         <div class="bg-veil"></div>
-        <div class="bg-tropical">
-          <svg class="palms" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax meet">
-            <defs>
-              <g id="palm">
-                <path d="M-7 0 C 2 -100, -10 -200, 16 -300 L 28 -300 C 4 -200, 14 -100, 7 0 Z"/>
-                <g transform="translate(22 -302)"><path d="M0 0 Q -71.1 -61.8 -147.7 29.0 Q -76.6 -30.3 0 0Z"/><path d="M0 0 Q -53.1 -60.0 -121.2 -50.0 Q -68.1 -34.0 0 0Z"/><path d="M0 0 Q -23.8 -59.6 -68.8 -103.3 Q -45.1 -44.7 0 0Z"/><path d="M0 0 Q 6.8 -54.3 -8.3 -104.6 Q -15.1 -52.4 0 0Z"/><path d="M0 0 Q 42.5 -50.6 62.5 -113.3 Q 20.0 -63.6 0 0Z"/><path d="M0 0 Q 68.1 -34.0 121.2 -50.0 Q 53.1 -60.0 0 0Z"/><path d="M0 0 Q 76.5 -27.6 148.5 34.1 Q 72.0 -59.3 0 0Z"/><path d="M0 0 Q -48.4 -18.1 -89.3 72.5 Q -40.9 2.6 0 0Z"/><path d="M0 0 Q 40.9 2.6 89.3 72.5 Q 48.4 -18.1 0 0Z"/><circle r="9"/></g>
-              </g>
-            </defs>
-            <path class="sea" d="M0 470 C 200 455, 400 485, 600 468 S 1000 455, 1200 470 L1200 600 L0 600 Z"/>
-            <path class="sea2" d="M0 505 C 220 492, 420 520, 640 503 S 1020 495, 1200 508 L1200 600 L0 600 Z"/>
-            <use href="#palm" transform="translate(1040 600) scale(1.25)"/>
-            <use href="#palm" transform="translate(1135 600) scale(.95) rotate(8)"/>
-            <use href="#palm" transform="translate(-10 600) scale(.8) rotate(-8)"/>
-            <use href="#palm" transform="translate(860 600) scale(.72) rotate(-4)" style="opacity:.55"/>
-          </svg>
-        </div>
-      </div>
-      <div class="bg-picker" role="group" aria-label="Preview background">
-        <span>Background</span>
-        <button type="button" id="bg-ocean" data-bg="ocean" aria-pressed="true">Ocean</button>
-        <button type="button" id="bg-tropical" data-bg="tropical" aria-pressed="false">Tropical</button>
       </div>
       <div class="wrap hero-grid">
         <div class="hero-copy">
@@ -903,37 +906,22 @@ chips.forEach(function(chip){
 });
 
 
-// ===== Hero background picker (remove once the client chooses) =====
+// ===== Backgrounds: ocean video in the hero, palm video behind the rest of the page =====
 (function(){
   var card = document.querySelector('.hero-card');
-  var saved = 'ocean';
-  try { saved = localStorage.getItem('heroBg') || 'ocean'; } catch(e){}
   var stillBg = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function playVideo(v){
-    card.classList.remove('video-on');
-    document.querySelectorAll('.bg-video').forEach(function(vid){
-      if (vid.dataset.for !== v){ vid.pause(); return; }
-      if (stillBg) return;
-      if (vid.classList.contains('ready')){ card.classList.add('video-on'); vid.play().catch(function(){}); return; }
-      if (!vid.src){
-        vid.addEventListener('playing', function(){ vid.classList.add('ready'); if (card.getAttribute('data-bg') === vid.dataset.for) card.classList.add('video-on'); });
-        vid.src = vid.dataset.src;
-      }
-      vid.play().catch(function(){});
-    });
+  function startVideo(vid, onReady){
+    if (stillBg) return;
+    vid.addEventListener('playing', function(){ vid.classList.add('ready'); if (onReady) onReady(); });
+    vid.src = vid.dataset.src;
+    vid.play().catch(function(){});
   }
-  function setBg(v){
-    card.setAttribute('data-bg', v);
-    playVideo(v);
-    document.querySelectorAll('.bg-picker button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.bg === v); });
-    try { localStorage.setItem('heroBg', v); } catch(e){}
-  }
-  document.querySelectorAll('.bg-picker button').forEach(function(b){ b.addEventListener('click', function(){ setBg(b.dataset.bg); }); });
-  setBg(saved);
+  startVideo(document.querySelector('.bg-video[data-for="ocean"]'), function(){ card.classList.add('video-on'); });
+  startVideo(document.querySelector('.page-video'));
 
   // Tropical: uses the photo from her original site if product_images/tropical.jpg exists, otherwise drawn palms
   var t = new Image();
-  t.onload = function(){ var el = document.querySelector('.bg-tropical'); el.style.setProperty('--tropical-photo', 'url(product_images/tropical.jpg)'); el.classList.add('has-photo'); };
+  t.onload = function(){ var el = document.getElementById('page-palms'); el.style.setProperty('--tropical-photo', 'url(product_images/tropical.jpg)'); el.classList.add('has-photo'); };
   t.src = 'product_images/tropical.jpg';
 
   // Ocean: animated rippling waves
