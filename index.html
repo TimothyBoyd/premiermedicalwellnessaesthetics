@@ -103,8 +103,7 @@ p{margin:0}
 /* Page-wide palm background (everything below the hero) */
 .page-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .page-bg .bg-tropical{display:block}
-.page-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}
-.page-video.ready{opacity:1}
+.page-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .page-veil{position:absolute;inset:0;background:rgba(255,255,255,.8)}
 main,footer{position:relative;z-index:1}
 
@@ -382,7 +381,7 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
 
 </head>
 <body>
-<!-- PAGE BACKGROUND: palm trees video (media/palms.mp4) under a white layer; drawn palms until it loads -->
+<!-- PAGE BACKGROUND: still palm tree photo (media/palms.jpg) under a white layer; drawn palms if the photo is missing -->
 <div class="page-bg" aria-hidden="true">
         <div class="bg-tropical" id="page-palms">
           <svg class="palms" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMax meet">
@@ -400,7 +399,7 @@ footer{padding-block:40px 56px;color:var(--ink-soft);font-size:13.5px}
             <use href="#palm" transform="translate(860 600) scale(.72) rotate(-4)" style="opacity:.55"/>
           </svg>
         </div>
-  <video class="page-video" data-src="media/palms.mp4" muted loop playsinline preload="none"></video>
+  <img class="page-photo" src="media/palms.jpg" alt="" onerror="this.remove()">
   <div class="page-veil"></div>
 </div>
 
@@ -917,7 +916,6 @@ chips.forEach(function(chip){
     vid.play().catch(function(){});
   }
   startVideo(document.querySelector('.bg-video[data-for="ocean"]'), function(){ card.classList.add('video-on'); });
-  startVideo(document.querySelector('.page-video'));
 
   // Tropical: uses the photo from her original site if product_images/tropical.jpg exists, otherwise drawn palms
   var t = new Image();
